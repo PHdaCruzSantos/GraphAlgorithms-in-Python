@@ -171,8 +171,50 @@ class Graph:
         return True
     
 
+    def bfs (self, s): #s is the starting node
+        visited = [False] * self.node_count
+        queue = []
+        R = []
+        queue.append(s)
+        visited[s] = True
+        while queue:
+            s = queue.pop(0)
+            R.append(s)
+            for i in self.adj_list[s]:
+                if visited[i] == False:
+                    queue.append(i)
+                    visited[i] = True                
+        return R
+    
+
+    def dfs (self, s): #s is the starting node
+        visited = [False] * self.node_count
+        stack = []
+        R = []
+        stack.append(s)
+        visited[s] = True
+        while stack:
+            s = stack.pop()
+            R.append(s)
+            for i in self.adj_list[s]:
+                if visited[i] == False:
+                    stack.append(i)
+                    visited[i] = True
+        return R
+    
+    def dfs_recursive_aux(self, s, visited, R):
+        visited[s] = True
+        R.append(s)
+        for i in self.adj_list[s]:
+            if visited[i] == False:
+                self.dfs_recursive_aux(i, visited, R)
 
 
+    def dfs_recursive(self, s):
+        visited = [False] * self.node_count
+        R = []
+        self.dfs_recursive_aux(s, visited, R)
+        return R
 
 
     def __str__(self) -> str:

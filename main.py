@@ -80,6 +80,47 @@ g2.add_edge(6, 4)
 g2.add_edge(6, 5)
 
 walk = [0, 3, 0, 5, 3, 4]
+path = [0, 3, 4, 6]
+circuit = [0, 3, 0, 5, 6, 3, 4, 2, 1, 0]
 
 print("is valid walk?? ", g2.is_valid_walk(walk))
-print("is valid path?? ", g2.is_valid_path(walk))
+print("is valid path?? ", g2.is_valid_path(path))
+print("is valid circuit?? ", g2.is_valid_circuit(circuit))
+
+print("------------------------")
+
+g3 = Graph()
+
+g3.add_node(0)
+g3.add_node(1)
+g3.add_node(2)
+g3.add_node(3)
+g3.add_node(4)
+
+g3.add_edge(0, 1)
+g3.add_edge(0, 3)
+g3.add_edge(0, 4)
+g3.add_edge(1, 2)
+
+print("bfs:", g3.bfs(0))
+
+print("------------------------")
+
+g4 = Graph()
+
+g4.add_node(0)
+g4.add_node(1)
+g4.add_node(2)
+g4.add_node(3)
+g4.add_node(4)
+g4.add_node(5)
+
+g4.add_edge(0, 2)
+g4.add_edge(0, 5)
+g4.add_edge(2, 4)
+g4.add_edge(4, 3)
+g4.add_edge(4, 5)
+g4.add_edge(5, 0)
+
+print("dfs:", g4.dfs_recursive(0))
+
